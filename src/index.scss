@@ -1,0 +1,29 @@
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+.app {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.top {
+    width: 100%;
+    display: flex;
+}
+
+.content {
+    width: 100%;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.bottom {
+    width: 100%;
+    min-height: 56px;
+}
