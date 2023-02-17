@@ -7,6 +7,9 @@ import './index.scss';
 import { Container } from '@mui/system';
 import PsychologyAltRoundedIcon from '@mui/icons-material/PsychologyAltRounded';
 import Grid from '@mui/material/Grid';
+import {Pages, pageState} from './state';
+import { RecoilRoot, useRecoilState } from 'recoil';
+import { Configure } from './configure';
 
 const darkTheme = createTheme({
   palette: {
@@ -15,6 +18,7 @@ const darkTheme = createTheme({
 });
 
 function App() {
+  const [page, setPage] = useRecoilState(pageState);
   let sample = "The quick brown fox jumps over the lazy dog.";
   let txt = [sample];
   for (let i = 0; i < 100; i++) {
@@ -32,19 +36,18 @@ function App() {
         </AppBar>
       </div>
       <div className='content'>
-        
         <Container maxWidth={maxWidth}>
-          {txt.map(t=><Typography variant='body1'>{t}</Typography>)}
+          {page == Pages.Configure && <Configure/>} 
         </Container>
       </div>
       <BottomNavigation showLabels className='bottom'>
-        <BottomNavigationAction label="Questions" />
-        <BottomNavigationAction label="Analysis" />
-        <BottomNavigationAction label="Configure" />
+        <BottomNavigationAction label="Questions" onClick={()=>setPage(Pages.Questions)} />
+        <BottomNavigationAction label="Analytics" onClick={()=>setPage(Pages.Analytics)} />
+        <BottomNavigationAction label="Configure" onClick={()=>setPage(Pages.Configure)} />
       </BottomNavigation>
     </div>
   </ThemeProvider>;
 }
 
 const root = createRoot(document.getElementById('root') as any);
-root.render(<App />);
+root.render(<RecoilRoot><App /></RecoilRoot>);
