@@ -16,7 +16,7 @@ import AnalyticsIcon from '@mui/icons-material/Analytics';
 
 const darkTheme = createTheme({
   palette: {
-    mode: 'dark',
+   // mode: 'dark',
   },
 });
 
