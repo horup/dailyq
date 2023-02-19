@@ -31,25 +31,27 @@ function App() {
   const maxWidth = 'md';
   return <ThemeProvider theme={darkTheme}>
     <div className='app'>
-      <div className='top'>
+      <div className='nav'>
         <AppBar position='static'>
           <Toolbar variant='dense'>
             <Typography variant='h6'>Daily Q</Typography>
           </Toolbar>
         </AppBar>
       </div>
-      <div className='content'>
+      <div className='page'>
         <Container maxWidth={maxWidth}>
           {page == Pages.Configure && <Configure/>} 
         </Container>
       </div>
-      <BottomNavigation showLabels className='bottom' value={page} onChange={(event, newValue) => {
-        setPage(newValue as Pages);
-      }}>
-        <BottomNavigationAction label="Questions" icon={<QuestionMarkIcon />} />
-        <BottomNavigationAction label="Analytics" icon={<AnalyticsIcon />} />
-        <BottomNavigationAction label="Configure" icon={<SettingsIcon />} />
-      </BottomNavigation>
+      <div className='bottom-nav'>
+        <BottomNavigation showLabels className='bottom' value={page} onChange={(event, newValue) => {
+          setPage(newValue as Pages);
+        }}>
+          <BottomNavigationAction label="Questions" icon={<QuestionMarkIcon />} />
+          <BottomNavigationAction label="Analytics" icon={<AnalyticsIcon />} />
+          <BottomNavigationAction label="Configure" icon={<SettingsIcon />} />
+        </BottomNavigation>
+      </div>
     </div>
   </ThemeProvider>;
 }

@@ -1,29 +1,25 @@
 body {
     padding: 0px;
     margin: 0px;
+    --nav-height:48px;
+    --bottom-nav-height:56px;
+}
+ 
+.nav {
+    height: var(--nav-height);
 }
 
-.app {
+.page {
+    position: absolute;
+    top: --nav-height;
     width: 100%;
-    margin: 0px;
-    padding: 0px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-.top {
-    width: 100%;
-    display: flex;
-}
-
-.content {
-    width: 100%;
-    flex-grow: 1;
     overflow-y: auto;
+    height: calc(#{100vh} - var(--bottom-nav-height) - var(--nav-height));
 }
 
-.bottom {
+.bottom-nav {
+    position: absolute;
+    height: var(--bottom-nav-height);
+    bottom: 0px;
     width: 100%;
-    min-height: 56px;
 }
