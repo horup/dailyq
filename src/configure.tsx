@@ -4,6 +4,21 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow/TableRow';
 import * as React from 'react';
 export function Configure() {
+
+
+    const onDelete = (id:string) => {
+        let sure = window.confirm("Are you sure you want to delete the question?");
+    }
+    const onAdd = ()=>{
+        let q = window.prompt("Provide a daily question","Did you do your bedst to eat healthy?");
+        if (q == null || q.length == 0) {
+            return;
+        }
+
+
+    }
+
+
     return <>
         <Table className='configure'>
             <TableHead>
@@ -22,14 +37,14 @@ export function Configure() {
                         <Typography variant='h6'>Did you do your bedst to xyz?</Typography>
                     </TableCell>
                     <TableCell align='right'>
-                        <Button size='small' variant='contained' color='error'>Delete</Button>
+                        <Button size='small' variant='contained' color='error' onClick={()=>onDelete()}>Delete</Button>
                     </TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell>
                     </TableCell>
                     <TableCell align='right'>
-                        <Button  size='small' variant='contained'>Add</Button>
+                        <Button  size='small' variant='contained' onClick={()=>onAdd()}>Add</Button>
                     </TableCell>
                 </TableRow>
             </TableBody>
