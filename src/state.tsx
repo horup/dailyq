@@ -9,7 +9,7 @@ export class Question {
 
 export const questionsState = atom({
     key:'QuestionsKey',
-    default:[],
+    default:[] as Question[],
     effects: [
         ()=> {
             console.log("load");

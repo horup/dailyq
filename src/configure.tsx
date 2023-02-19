@@ -3,11 +3,20 @@ import Table from '@mui/material/Table';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow/TableRow';
 import * as React from 'react';
+import { useRecoilState } from 'recoil';
+import * as state from './state';
+
 export function Configure() {
 
+    const [questions, setQuestions] = useRecoilState(state.questionsState);
 
-    const onDelete = (id:string) => {
-        let sure = window.confirm("Are you sure you want to delete the question?");
+    const onDelete = (index:number, q:string) => {
+        let sure = window.confirm("Are you sure you want to delete the question: " + q);
+        if (sure) {
+            let qs = [...questions];
+            qs.splice(index, 1);
+            setQuestions(qs);
+        }
     }
     const onAdd = ()=>{
         let q = window.prompt("Provide a daily question","Did you do your bedst to eat healthy?");
@@ -15,7 +24,13 @@ export function Configure() {
             return;
         }
 
+        let qs = [...questions];
+        qs.push({
+            question:q,
+            score:{}
+        });
 
+        setQuestions(qs);
     }
 
 
@@ -32,14 +47,18 @@ export function Configure() {
                 </TableRow>
             </TableHead>
             <TableBody>
-                <TableRow>
-                    <TableCell>
-                        <Typography variant='h6'>Did you do your bedst to xyz?</Typography>
-                    </TableCell>
-                    <TableCell align='right'>
-                        <Button size='small' variant='contained' color='error' onClick={()=>onDelete()}>Delete</Button>
-                    </TableCell>
-                </TableRow>
+                {questions.map((q, index)=>{
+                    return (
+                        <TableRow>
+                            <TableCell>
+                                <Typography variant='h6'>{q.question}</Typography>
+                            </TableCell>
+                            <TableCell align='right'>
+                                <Button size='small' variant='contained' color='error' onClick={()=>onDelete(index, questions[index].question)}>Delete</Button>
+                            </TableCell>
+                        </TableRow>);
+                })}
+                
                 <TableRow>
                     <TableCell>
                     </TableCell>
