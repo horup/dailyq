@@ -2,9 +2,8 @@
   "name": "dailyq",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "parcel build src/index.html",
     "start": "parcel src/index.html"
   },
   "repository": {
@@ -22,6 +21,7 @@
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.8",
+    "@mui/system": "^5.11.9",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.10",
     "parcel": "^2.8.3",
