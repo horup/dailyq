@@ -49,7 +49,7 @@ export function Configure() {
             <TableBody>
                 {questions.map((q, index)=>{
                     return (
-                        <TableRow>
+                        <TableRow key={index}>
                             <TableCell>
                                 <Typography variant='h6'>{q.question}</Typography>
                             </TableCell>

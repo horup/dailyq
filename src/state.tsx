@@ -1,4 +1,21 @@
-import { atom } from "recoil";
+import { atom, DefaultValue } from "recoil";
+
+const localStorageEffect = key => ({setSelf, onSet}) => {
+    setSelf(()=>{
+        console.log('setself');
+        let v = localStorage.getItem(key);
+        if (v != null) {
+            return JSON.parse(v);
+        } 
+
+        return new DefaultValue();
+    });
+
+    onSet((newValue)=>{
+        localStorage.setItem(key, JSON.stringify(newValue));
+    });
+  };
+
 
 export class Question {
     question:string;
@@ -11,9 +28,7 @@ export const questionsState = atom({
     key:'QuestionsKey',
     default:[] as Question[],
     effects: [
-        ()=> {
-            console.log("load");
-        }
+        localStorageEffect('questions'),
     ]
 });
 
@@ -26,5 +41,9 @@ export enum Pages {
 
 export const pageState = atom({
     key:'PageKey',
-    default:Pages.Configure
+    default:Pages.Configure,
+    effects: [
+        localStorageEffect('page'),
+    ]
+    
 });
