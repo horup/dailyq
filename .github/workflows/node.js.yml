@@ -31,4 +31,9 @@ jobs:
       uses: actions/upload-artifact@v3.1.2
       with:
         path: dist
+    - name: Deploy GitHub Pages site
+      uses: actions/deploy-pages@v1.2.4
+      with:
+        artifact_name: artifact
+      
     
