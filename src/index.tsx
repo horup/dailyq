@@ -14,6 +14,7 @@ import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
 import { Questions } from './questions';
+import { Analytics } from './analytics';
 
 const darkTheme = createTheme({
   palette: {
@@ -35,7 +36,7 @@ function App() {
       <div className='nav'>
         <AppBar position='fixed'>
           <Toolbar variant='dense'>
-            <Typography variant='h6'>Daily Q</Typography>
+            <Typography variant='h6'>DailyQ</Typography>
           </Toolbar>
         </AppBar>
       </div>
@@ -43,6 +44,7 @@ function App() {
         <Container maxWidth={maxWidth}>
           {page == Pages.Configure && <Configure/>} 
           {page == Pages.Questions && <Questions/>} 
+          {page == Pages.Analytics && <Analytics/>} 
         </Container>
       </div>
       <div className='bottom-nav'>
