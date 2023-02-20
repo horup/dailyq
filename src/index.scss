@@ -9,6 +9,7 @@ html, body {
  
 .nav {
     height: var(--nav-height);
+    z-index: 99999;
 }
 
 .page {

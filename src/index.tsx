@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
-import { AppBar, Box, Button, createTheme, Icon, ThemeProvider, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Button, createTheme, Icon, Paper, ThemeProvider, Toolbar, Typography } from '@mui/material';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import './index.scss';
@@ -32,7 +32,7 @@ function App() {
   return <ThemeProvider theme={darkTheme}>
     <div className='app'>
       <div className='nav'>
-        <AppBar position='static'>
+        <AppBar position='fixed'>
           <Toolbar variant='dense'>
             <Typography variant='h6'>Daily Q</Typography>
           </Toolbar>
@@ -44,6 +44,8 @@ function App() {
         </Container>
       </div>
       <div className='bottom-nav'>
+        <Paper elevation={3}>
+
         <BottomNavigation showLabels className='bottom' value={page} onChange={(event, newValue) => {
           setPage(newValue as Pages);
         }}>
@@ -51,6 +53,8 @@ function App() {
           <BottomNavigationAction label="Analytics" icon={<AnalyticsIcon />} />
           <BottomNavigationAction label="Configure" icon={<SettingsIcon />} />
         </BottomNavigation>
+        </Paper>
+
       </div>
     </div>
   </ThemeProvider>;
