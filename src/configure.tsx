@@ -37,7 +37,7 @@ export function Configure() {
 
     return <>
         <TableContainer component={Paper}>
-            <Table className='configure' size='medium'>
+            <Table className='configure' size='small'>
                 <TableHead>
                     <TableRow>
                         <TableCell>
@@ -56,14 +56,14 @@ export function Configure() {
                                     <Typography className='question' variant='body1'>{q.question}</Typography>
                                 </TableCell>
                                 <TableCell className='cell-button' align='right'>
-                                    <Button size='small' variant='contained' color='error' onClick={()=>onDelete(index, questions[index].question)}>Delete</Button>
+                                    <Button size='small' variant='contained' color='error' onClick={()=>onDelete(index, questions[index].question)}>DEL</Button>
                                 </TableCell>
                             </TableRow>);
                     })}
                     
                     <TableRow>
                         <TableCell>
-                            <TextField value={newQuestion} onChange={(e)=>setNewQuestion(e.target.value)} size='small' style={{width:'100%' }} variant='outlined'></TextField>
+                            <TextField multiline={true} value={newQuestion} onChange={(e)=>setNewQuestion(e.target.value)} size='small' style={{width:'100%' }} variant='outlined'></TextField>
                         </TableCell>
                         <TableCell className='cell-button' align='right'>
                             <Button size='small' variant='contained' onClick={()=>onAdd()}>Add</Button>
