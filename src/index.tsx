@@ -13,6 +13,7 @@ import { Configure } from './configure';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
+import { Questions } from './questions';
 
 const darkTheme = createTheme({
   palette: {
@@ -41,6 +42,7 @@ function App() {
       <div className='page'>
         <Container maxWidth={maxWidth}>
           {page == Pages.Configure && <Configure/>} 
+          {page == Pages.Questions && <Questions/>} 
         </Container>
       </div>
       <div className='bottom-nav'>

@@ -1,3 +1,4 @@
+import { DateTime } from "luxon";
 import { atom, DefaultValue } from "recoil";
 
 const localStorageEffect = key => ({setSelf, onSet}) => {
@@ -16,7 +17,7 @@ const localStorageEffect = key => ({setSelf, onSet}) => {
   };
 
 
-export class Question {
+export interface Question {
     question:string;
     score:{
         [date:string]:number
@@ -44,5 +45,21 @@ export const pageState = atom({
     effects: [
         localStorageEffect('page'),
     ]
-    
 });
+
+export const dateKeyState = atom({
+    key:'DateKeyState',
+    default:toDateKey(DateTime.now()),
+});
+
+export function dateKeyToString(key:string) {
+    if (key == toDateKey(DateTime.now())) {
+        return 'Today';
+    }
+
+    return key;
+}
+
+export function toDateKey(dt:DateTime) {
+    return dt.toSQLDate();
+}
