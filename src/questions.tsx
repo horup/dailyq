@@ -4,7 +4,8 @@ import { dateKeyToString } from './state';
 import * as state from './state';
 import {useRecoilState} from 'recoil';
 import Typography from '@mui/material/Typography';
-import { Button, Dialog, Divider, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
+import { Button, Dialog, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
+import { ArrowBack, ArrowForward } from '@mui/icons-material';
 
 export function Questions() {
     const [selectedQuestion, setSelectedQuestion] = React.useState<number | null>(null);
@@ -20,10 +21,29 @@ export function Questions() {
         }
     }
 
+    const onPrev = ()=>{
+        const dt = DateTime.fromSQL(dateKey).minus({days:1});
+        setDateKey(state.toDateKey(dt));
+    }
+
+    const onNext = ()=>{
+        const dt = DateTime.fromSQL(dateKey).plus({days:1});
+        setDateKey(state.toDateKey(dt));
+    }
+
     return <>
-        <div style={{width:'100%', textAlign:'center'}}>
-            <Typography variant='h5'>{dateKeyToString(dateKey)}</Typography>
-        </div>
+        <Grid container padding={1}>
+            <Grid item xs={4}>
+                <Button onClick={()=>onPrev()} startIcon={<ArrowBack/>}>Prev</Button>
+            </Grid>
+            <Grid item xs={4} textAlign={'center'}>
+                <Typography variant='body1' fontWeight={600}>{dateKeyToString(dateKey)}</Typography>
+                <Typography variant='subtitle2'>{dateKey}</Typography> 
+            </Grid>
+            <Grid item xs={4} textAlign={'right'}>
+                <Button onClick={()=>onNext()} endIcon={<ArrowForward/>}>Next</Button>
+            </Grid>
+        </Grid>
         <br/>
         <TableContainer component={Paper}>
             <Table size='small'>

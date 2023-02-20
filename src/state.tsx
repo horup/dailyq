@@ -55,9 +55,13 @@ export const dateKeyState = atom({
 export function dateKeyToString(key:string) {
     if (key == toDateKey(DateTime.now())) {
         return 'Today';
+    } else if (key == toDateKey(DateTime.now().minus({days:1}))) {
+        return 'Yesterday';
+    } else if (key == toDateKey(DateTime.now().plus({days:1}))) {
+        return 'Tomorrow';
     }
 
-    return key;
+    return 'Date';
 }
 
 export function toDateKey(dt:DateTime) {
