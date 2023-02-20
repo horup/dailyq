@@ -10,6 +10,7 @@ body {
 }
 
 .page {
+    padding-top: 32px;
     position: absolute;
     top: --nav-height;
     width: 100%;
@@ -26,6 +27,15 @@ body {
 
 .configure {
     button {
+        width: 100%;
+    }
+    .cell-button {
         width: 128px;
+    }
+    .question {
+        padding-left: 14px;
+    }
+    .input-question {
+        
     }
 }

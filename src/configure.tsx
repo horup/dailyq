@@ -1,4 +1,4 @@
-import { Button, TableBody, TableCell, Typography } from '@mui/material';
+import { Button, Paper, TableBody, TableCell, TableContainer, TextField, Typography } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow/TableRow';
@@ -35,38 +35,41 @@ export function Configure() {
 
 
     return <>
-        <Table className='configure'>
-            <TableHead>
-                <TableRow>
-                    <TableCell>
-                        <Typography variant='h5'>Question</Typography>
-                    </TableCell>
-                    <TableCell>
-                        
-                    </TableCell>
-                </TableRow>
-            </TableHead>
-            <TableBody>
-                {questions.map((q, index)=>{
-                    return (
-                        <TableRow key={index}>
-                            <TableCell>
-                                <Typography variant='h6'>{q.question}</Typography>
-                            </TableCell>
-                            <TableCell align='right'>
-                                <Button size='small' variant='contained' color='error' onClick={()=>onDelete(index, questions[index].question)}>Delete</Button>
-                            </TableCell>
-                        </TableRow>);
-                })}
-                
-                <TableRow>
-                    <TableCell>
-                    </TableCell>
-                    <TableCell align='right'>
-                        <Button  size='small' variant='contained' onClick={()=>onAdd()}>Add</Button>
-                    </TableCell>
-                </TableRow>
-            </TableBody>
-        </Table>
+        <TableContainer component={Paper}>
+            <Table className='configure' size='medium'>
+                <TableHead>
+                    <TableRow>
+                        <TableCell>
+                            <Typography className='question' variant='body1'><b>Question</b></Typography>
+                        </TableCell>
+                        <TableCell>
+                            
+                        </TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {questions.map((q, index)=>{
+                        return (
+                            <TableRow key={index}>
+                                <TableCell>
+                                    <Typography className='question' variant='body1'>{q.question}</Typography>
+                                </TableCell>
+                                <TableCell className='cell-button' align='right'>
+                                    <Button size='small' variant='contained' color='error' onClick={()=>onDelete(index, questions[index].question)}>Delete</Button>
+                                </TableCell>
+                            </TableRow>);
+                    })}
+                    
+                    <TableRow>
+                        <TableCell>
+                            <TextField className='input-question' size='small' style={{width:'100%' }} variant='outlined'></TextField>
+                        </TableCell>
+                        <TableCell className='cell-button' align='right'>
+                            <Button size='small' variant='contained' onClick={()=>onAdd()}>Add</Button>
+                        </TableCell>
+                    </TableRow>
+                </TableBody>
+            </Table>
+        </TableContainer>
     </>
 }
