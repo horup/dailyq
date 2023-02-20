@@ -2,7 +2,6 @@ import { atom, DefaultValue } from "recoil";
 
 const localStorageEffect = key => ({setSelf, onSet}) => {
     setSelf(()=>{
-        console.log('setself');
         let v = localStorage.getItem(key);
         if (v != null) {
             return JSON.parse(v);

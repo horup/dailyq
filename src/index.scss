@@ -16,7 +16,7 @@ body {
     top: --nav-height;
     width: 100%;
     overflow-y: auto;
-    height: calc(#{100vh} - var(--bottom-nav-height) - var(--nav-height));
+    height: calc(#{100vh} - var(--bottom-nav-height) - var(--nav-height) - var(--spacing-big));
 }
 
 .bottom-nav {
