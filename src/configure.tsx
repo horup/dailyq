@@ -9,6 +9,7 @@ import * as state from './state';
 export function Configure() {
 
     const [questions, setQuestions] = useRecoilState(state.questionsState);
+    const [newQuestion, setNewQuestion] = React.useState("");
 
     const onDelete = (index:number, q:string) => {
         let sure = window.confirm("Are you sure you want to delete the question: " + q);
@@ -19,17 +20,17 @@ export function Configure() {
         }
     }
     const onAdd = ()=>{
-        let q = window.prompt("Provide a daily question","Did you do your bedst to eat healthy?");
-        if (q == null || q.length == 0) {
+        if (newQuestion.length == 0) {
             return;
         }
 
         let qs = [...questions];
         qs.push({
-            question:q,
+            question:newQuestion,
             score:{}
         });
 
+        setNewQuestion("");
         setQuestions(qs);
     }
 
@@ -62,7 +63,7 @@ export function Configure() {
                     
                     <TableRow>
                         <TableCell>
-                            <TextField className='input-question' size='small' style={{width:'100%' }} variant='outlined'></TextField>
+                            <TextField value={newQuestion} onChange={(e)=>setNewQuestion(e.target.value)} size='small' style={{width:'100%' }} variant='outlined'></TextField>
                         </TableCell>
                         <TableCell className='cell-button' align='right'>
                             <Button size='small' variant='contained' onClick={()=>onAdd()}>Add</Button>

@@ -3,6 +3,7 @@ body {
     margin: 0px;
     --nav-height:48px;
     --bottom-nav-height:56px;
+    --spacing-big:32px;
 }
  
 .nav {
@@ -10,7 +11,7 @@ body {
 }
 
 .page {
-    padding-top: 32px;
+    padding-top: var(--spacing-big);
     position: absolute;
     top: --nav-height;
     width: 100%;
@@ -34,8 +35,5 @@ body {
     }
     .question {
         padding-left: 14px;
-    }
-    .input-question {
-        
     }
 }
