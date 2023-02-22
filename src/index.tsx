@@ -40,8 +40,8 @@ function App() {
           </Toolbar>
         </AppBar>
       </div>
-      <div className='page'>
-        <Container maxWidth={maxWidth}>
+      <div className='page' style={{width:maxWidth}}>
+        <Container disableGutters className='container' maxWidth={maxWidth}>
           {page == Pages.Configure && <Configure/>} 
           {page == Pages.Questions && <Questions/>} 
           {page == Pages.Analytics && <Analytics/>} 

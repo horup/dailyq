@@ -13,13 +13,11 @@ html, body {
 }
 
 .page {
-    padding-top: var(--spacing-big);
-    padding-bottom: var(--spacing-big);
     position: absolute;
     top: --nav-height;
     width: 100%;
     overflow-y: auto;
-    height: calc(#{100%} - var(--bottom-nav-height) - var(--nav-height) - var(--spacing-big) - var(--spacing-big));
+    height: calc(#{100%} - var(--bottom-nav-height) - var(--nav-height));
 }
 
 .bottom-nav {

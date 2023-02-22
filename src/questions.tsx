@@ -45,22 +45,20 @@ export function Questions() {
             </Grid>
         </Grid>
         <br/>
-        <TableContainer component={Paper}>
-            <Table size='small'>
-                <TableBody>
-                    {questions.map((q,index)=>{
-                        let score = q.score[dateKey] ? q.score[dateKey] : '-';
+        <Table size='small'>
+            <TableBody>
+                {questions.map((q,index)=>{
+                    let score = q.score[dateKey] ? q.score[dateKey] : '-';
 
-                        return (
-                            <TableRow key={index}>
-                                <TableCell>{q.question}</TableCell>
-                                <TableCell style={{width:'auto', textAlign:'right'}}><Button onClick={()=>setSelectedQuestion(index)} size='small' variant='contained'>{score}</Button></TableCell>
-                            </TableRow>
-                        )
-                    })}
-                </TableBody>
-            </Table>
-        </TableContainer>
+                    return (
+                        <TableRow key={index}>
+                            <TableCell>{q.question}</TableCell>
+                            <TableCell style={{width:'auto', textAlign:'right'}}><Button onClick={()=>setSelectedQuestion(index)} size='small' variant='contained'>{score}</Button></TableCell>
+                        </TableRow>
+                    )
+                })}
+            </TableBody>
+        </Table>
         <Dialog open={selectedQuestion != null} onClose={()=>setSelectedQuestion(null)}>
             <Paper>
                 <Grid padding={2} container={true} spacing={2}>
