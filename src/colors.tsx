@@ -18,3 +18,8 @@ export function getColor(scoreValue:undefined | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 
         return colors[scoreValue - 1];
     }
 }
+
+
+export function getColorForeground(scoreValue:undefined | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10) {
+    return '#000000B0';
+}

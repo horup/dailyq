@@ -6,7 +6,7 @@ import {useRecoilState} from 'recoil';
 import Typography from '@mui/material/Typography';
 import { Button, Dialog, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 import { ArrowBack, ArrowForward } from '@mui/icons-material';
-import { getColor } from './colors';
+import { getColor, getColorForeground } from './colors';
 
 export function Questions() {
     const [selectedQuestion, setSelectedQuestion] = React.useState<number | null>(null);
@@ -54,7 +54,7 @@ export function Questions() {
                     return (
                         <TableRow key={index}>
                             <TableCell>{q.question}</TableCell>
-                            <TableCell style={{width:'auto', textAlign:'right'}}><Button style={{backgroundColor:getColor(q.score[dateKey] as any)}} onClick={()=>setSelectedQuestion(index)} size='small' variant='contained'>{score}</Button></TableCell>
+                            <TableCell style={{width:'auto', textAlign:'right'}}><Button style={{backgroundColor:getColor(q.score[dateKey] as any), color:getColorForeground(q.score[dateKey] as any)}} onClick={()=>setSelectedQuestion(index)} size='small' variant='contained'>{score}</Button></TableCell>
                         </TableRow>
                     )
                 })}
@@ -64,7 +64,7 @@ export function Questions() {
             <Paper>
                 <Grid padding={2} container={true} spacing={2}>
                     {[10, 9, 8, 7, 6, 5, 4, 3, 2, 1].map((scoreValue, index)=>{
-                        return  <Grid key={index} item xs={12}><Button style={{backgroundColor:getColor(scoreValue as any)}} onClick={()=>onClickScore(scoreValue)} variant='contained' fullWidth>{scoreValue}</Button></Grid>
+                        return  <Grid key={index} item xs={12}><Button style={{backgroundColor:getColor(scoreValue as any), color:getColorForeground(scoreValue as any)}} onClick={()=>onClickScore(scoreValue)} variant='contained' fullWidth>{scoreValue}</Button></Grid>
                     })}
                     
                 </Grid>
