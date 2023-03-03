@@ -7,9 +7,8 @@ import * as state from './state';
 
 export function Score({ scoreValue }: { scoreValue: number | undefined }) {
     let color = getColor(scoreValue as any);
-    return (
-        <Typography variant='caption' style={{ color: color }}>{scoreValue != null ? scoreValue : '--'}</Typography>
-    )
+    let height = (scoreValue * 2) + 'px';
+    return <div className='score-bar-score' style={{backgroundColor:color, height}} />;
 }
 
 export function Analytics() {
@@ -22,6 +21,12 @@ export function Analytics() {
     }
     days.reverse();
     return <Box padding={2}><Grid container>
+        <Grid xs={6} item >
+            <Typography color={'grey'} variant='caption'>Past</Typography>
+        </Grid>
+        <Grid xs={6} item style={{textAlign:'right'}}>
+            <Typography color={'grey'} variant='caption'>Now</Typography>
+        </Grid>
         {questions.map((q, index) => {
             return (
                 <React.Fragment key={index}>
@@ -30,7 +35,7 @@ export function Analytics() {
                     </Grid>
                     {days.map((day) => {
                         return (
-                            <Grid textAlign={'left'} key={day} item xs={1}>
+                            <Grid alignContent={'flex-end'} key={day} item xs={1} className='score-bar' >
                                 <Score scoreValue={q.score[day]} />
                             </Grid>
                         )

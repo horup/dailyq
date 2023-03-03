@@ -38,3 +38,16 @@ html, body {
         padding-left: 14px;
     }
 }
+
+.score-bar-score {
+    width: 100%;
+    display: flex;
+    align-self: flex-end;
+}
+
+.score-bar {
+    display: flex;
+    height: 24px;
+    width: 100%;
+    background-color: lightgrey;
+}
